@@ -1,4 +1,3 @@
-bashCopycat << EOF > ~/www/dashapp/app/app.py
 import dash
 from dash import html, dcc
 import plotly.express as px
