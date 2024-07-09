@@ -5,7 +5,7 @@ from dash import dcc, html
 # Initialize the Dash app
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
 exp_btn_css = 'assets/exoort_btn.css'
-app = dash.Dash(external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css])
+app = dash.Dash()
 
 # Simple layout for testing
 app.layout = html.Div(children=[
