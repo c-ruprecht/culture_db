@@ -16,21 +16,6 @@ app = dash.Dash(__name__,
 # Set the layout for the Dash app
 app.layout = layout
 
-
-@app.callback(
-    Output('page-content', 'children'),
-    Input('url', 'pathname')
-)
-def display_page(pathname):
-    if pathname == '/':
-        return home.layout
-    elif pathname == '/analysis_donor':
-        return analysis_donor.layout
-    elif pathname == '/browse_sql':
-        return browse_sql.layout
-    else:
-        return home.layout
-
 # Run the server
 if __name__ == '__main__':
     app.run_server(host="0.0.0.0", port=8050, debug=True)
