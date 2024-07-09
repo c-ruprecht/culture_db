@@ -33,5 +33,5 @@ def display_page(pathname, db_path):
         return home.layout
 
 # Run the server
-if __name__ == '__main__':
-    app.run_server(host="0.0.0.0", port=8050, debug=True)
+#if __name__ == '__main__':
+#    app.run_server(host="0.0.0.0", port=8050, debug=True)

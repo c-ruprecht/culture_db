@@ -5,7 +5,7 @@ cd /hpc/users/ruprec01/www/culture_db
 pip3 install -r requirements.txt
 
 # test 
-cd dashapp
-python3 app.py
+cd /hpc/users/ruprec01/www/culture_db
+python3 culture_db_app.py
 
 # access
