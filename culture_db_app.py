@@ -1,9 +1,11 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from flask import Flask
 
 # for deployment, pass app.server (which is the actual flask app) to WSGI etc
-app = dash.Dash()
+#app = dash.Dash()
+app = flask.Flask(__name__)
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
