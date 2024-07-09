@@ -1,23 +1,27 @@
 import dash
-from dash import html, dcc
-import plotly.express as px
+import dash_core_components as dcc
+import dash_html_components as html
 
+# for deployment, pass app.server (which is the actual flask app) to WSGI etc
 app = dash.Dash()
 
-# Sample data
-df = px.data.iris()
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash'),
 
-# Create a simple layout
-app.layout = html.Div([
-    html.H1('Iris Dataset Dashboard'),
+    html.Div(children='''
+        Dash: A web application framework for Python.
+    '''),
+
     dcc.Graph(
-        id='scatter-plot',
-        figure=px.scatter(df, x="sepal_width", y="sepal_length", color="species")
+        id='example-graph',
+        figure={
+            'data': [
+                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
+                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'MontrÃ©al'},
+            ],
+            'layout': {
+                'title': 'Dash Data Visualization'
+            }
+        }
     )
 ])
-
-# This is the server object that will be used by the WSGI file
-server = app.server
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
