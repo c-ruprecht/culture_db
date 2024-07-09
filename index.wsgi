@@ -8,7 +8,7 @@ if project_home not in sys.path:
 # need to pass the flask app as "application" for WSGI to work
 # for a dash app, that is at app.server
 # see https://plot.ly/dash/deployment
-from culture_db_app_copy import app 
+from culture_db_app import app 
 application = app.server
 
 app.config.update({
