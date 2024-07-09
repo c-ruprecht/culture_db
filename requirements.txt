@@ -1,4 +1,11 @@
-dash
-flask
-itsdangerous==2.0.1
+pandas
 plotly
+pandera
+dash
+dash-core-components
+dash-html-components
+dash-bootstrap-components
+dash-daq
+dash-cytoscape
+flask
+gunicorn
