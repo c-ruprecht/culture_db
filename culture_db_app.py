@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc
 import plotly.express as px
 
-app = dash.Dash(__name__)
+app = dash.Dash()
 
 # Sample data
 df = px.data.iris()
