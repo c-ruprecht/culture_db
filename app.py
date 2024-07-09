@@ -9,7 +9,8 @@ from components.layout import layout
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
 exp_btn_css = 'components/export_btn.css'
 
-app = dash.Dash(external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css],
+app = dash.Dash(__name__,
+                external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css],
                 prevent_initial_callbacks=True,
                 suppress_callback_exceptions=True)
 # Set the layout for the Dash app
@@ -18,10 +19,9 @@ app.layout = layout
 
 @app.callback(
     Output('page-content', 'children'),
-    Input('url', 'pathname'),
-    State('store-db-path', 'data')
+    Input('url', 'pathname')
 )
-def display_page(pathname, db_path):
+def display_page(pathname):
     if pathname == '/':
         return home.layout
     elif pathname == '/analysis_donor':
@@ -32,5 +32,5 @@ def display_page(pathname, db_path):
         return home.layout
 
 # Run the server
-#if __name__ == '__main__':
-#    app.run_server(host="0.0.0.0", port=8050, debug=True)
+if __name__ == '__main__':
+    app.run_server(host="0.0.0.0", port=8050, debug=True)
