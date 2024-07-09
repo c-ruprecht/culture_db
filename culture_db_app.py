@@ -1,29 +1,37 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from flask import Flask
+import dash_bootstrap_components as dbc
+from dash import Dash, Input, Output, State, dcc, html
+from navbar import CONTENT_STYLE, navbar
+from apps import home, browse_sql, analysis_donor
+from components.layout import layout
 
-# for deployment, pass app.server (which is the actual flask app) to WSGI etc
-#app = dash.Dash()
-app = flask.Flask(__name__)
+# Initialize the Dash app
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
+exp_btn_css = 'assets/exoort_btn.css'
+app = Dash(__name__,
+           suppress_callback_exceptions=True,
+           prevent_initial_callbacks=True,
+           external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css])
 
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+# Set the layout for the Dash app
+app.layout = layout
 
-    html.Div(children='''
-        Dash: A web application framework for Python.
-    '''),
 
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'MontrÃ©al'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
-])
+@app.callback(
+    Output('page-content', 'children'),
+    Input('url', 'pathname'),
+    State('store-db-path', 'data')
+)
+def display_page(pathname, db_path):
+    if pathname == '/':
+        return home.layout
+    elif pathname == '/analysis_donor':
+        return analysis_donor.layout
+    elif pathname == '/browse_sql':
+        return browse_sql.layout
+    else:
+        return home.layout
+
+# Run the server
+if __name__ == '__main__':
+    app.run_server(host="0.0.0.0", port=8050, debug=True)

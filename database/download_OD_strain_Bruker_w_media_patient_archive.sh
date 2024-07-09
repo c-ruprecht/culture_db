@@ -1,0 +1,2 @@
+.headers ON
+select genus, species, strain, OD600_no_bkgnd, culture_type, culture_vessel, culture_name, bruker_name, bruker_score, library_name, health_status, archive_well, patient_id FROM growth gr, strain s, library l, culture c, isolate i,  donor d, sample sa WHERE l.library_id=i.library_id AND s.strain_id=i.strain_id AND gr.culture_id=c.culture_id AND gr.isolate_id=i.isolate_id AND sa.sample_id=l.sample_id AND sa.donor_id = d.donor_id AND c.culture_type='archive';
