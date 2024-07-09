@@ -9,7 +9,7 @@ if project_home not in sys.path:
 # for a dash app, that is at app.server
 # see https://plot.ly/dash/deployment
 #from culture_db_app import app 
-from culture_db_app_minimal import app 
+from culture_db_app_copy import app 
 
 application = app.server
 
