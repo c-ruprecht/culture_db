@@ -10,7 +10,7 @@ from components.layout import layout
 #exp_btn_css = 'components/export_btn.css'
 
 app = dash.Dash(__name__,
-                external_stylesheets=[dbc.themes.LUX]#, exp_btn_css, dbc_css],
+                external_stylesheets=[dbc.themes.LUX],#, exp_btn_css, dbc_css],
                 prevent_initial_callbacks=True,
                 suppress_callback_exceptions=True)
 # Set the layout for the Dash app
