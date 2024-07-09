@@ -1,6 +1,5 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc, html
 
 # for deployment, pass app.server (which is the actual flask app) to WSGI etc
 app = dash.Dash()
@@ -25,3 +24,6 @@ app.layout = html.Div(children=[
         }
     )
 ])
+# Run the server
+if __name__ == '__main__':
+    app.run_server(host="0.0.0.0", port=8050, debug=True)
