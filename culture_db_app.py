@@ -8,10 +8,10 @@ from components.layout import layout
 # Initialize the Dash app
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.css"
 exp_btn_css = 'assets/exoort_btn.css'
-app = dash.Dash(suppress_callback_exceptions=True,
-           prevent_initial_callbacks=True,
-           external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css])
 
+app = dash.Dash(external_stylesheets=[dbc.themes.LUX, exp_btn_css, dbc_css],
+                prevent_initial_callbacks=True,
+                suppress_callback_exceptions=True)
 # Set the layout for the Dash app
 app.layout = layout
 

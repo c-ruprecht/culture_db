@@ -6,6 +6,10 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import sqlite3
 from sqlite3 import Error
+from components.layout import layout
+
+db_path = layout['store-db-path'].data.get('db_path', '')
+
 
 dash.register_page(__name__)
 
@@ -39,7 +43,7 @@ def initialize_cytoscape(data):
             """
 
     try:
-        with sqlite3.connect(data.get('db_path', '')) as connection:
+        with sqlite3.connect(db_path) as connection:
             df = pd.read_sql_query(query, connection)
     except sqlite3.Error as e:
         print(f"An error occurred: {e}")
@@ -99,7 +103,7 @@ def update_table(data, selected_nodes):
             """
 
     try:
-        with sqlite3.connect(data.get('db_path', '')) as connection:
+        with sqlite3.connect(db_path) as connection:
             df = pd.read_sql_query(query, connection)
     except sqlite3.Error as e:
         print(f"An error occurred: {e}")
@@ -204,7 +208,6 @@ def on_button_click(qry_drop, n_clicks, value, data):
         return dash.no_update, queries.get(qry_drop, '')
 
     elif triggered_id == 'sql-submit-button' and n_clicks > 0:
-        db_path = data.get('db_path', '')
         try:
             with sqlite3.connect(db_path) as connection:
                 df = pd.read_sql_query(str(value), connection)
