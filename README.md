@@ -14,3 +14,6 @@ git clone
 # update
 cd /hpc/users/ruprec01/www/culture_db
 git pull
+
+# Git error 
+git reset --hard origin/main
