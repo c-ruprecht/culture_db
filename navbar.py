@@ -17,7 +17,7 @@ import dash_bootstrap_components as dbc
 import dash_daq as daq
 from dash import Input, Output, State,  dcc, html, Dash, callback
 
-app = Dash()#external_stylesheets=[dbc.themes.BOOTSTRAP]
+app = dash.Dash()#external_stylesheets=[dbc.themes.BOOTSTRAP]
 
 #Replace current sidebar with navbar from
 #https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
