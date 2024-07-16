@@ -10,9 +10,10 @@ For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plotly.com/urls
 """
 
-import dash
 import dash_bootstrap_components as dbc
-from dash import Input, Output, State, dcc, html, Dash, callback
+import dash
+from dash import dcc, html
+from dash.dependencies import Input, Output, State
 
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
