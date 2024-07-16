@@ -1,8 +1,11 @@
+# Installation
+cd /hpc/users/ruprec01/www/
 git clone...
-# Load module python 3.10
-ml python/3.10.4
+
+# create venv and install from requirements file
 cd /hpc/users/ruprec01/www/culture_db
-pip3 install --user -r requirements.txt
+python3 -m venv /hpc/users/ruprec01/venv_culture_db # This path needs to be updated in index.wsgi
+/hpc/users/ruprec01/venv_culture_db/bin/pip install -r requirements.txt
 
 # test 
 cd /hpc/users/ruprec01/www/culture_db

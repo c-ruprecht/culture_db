@@ -1,4 +1,9 @@
 import sys
+import site
+
+# Activate your virtual environment
+activate_this = '/hpc/users/ruprec01/venv_culture_db/bin/activate_this.py'
+exec(open(activate_this).read(), {'__file__': activate_this})
 
 # add your project directory to the sys.path
 project_home = u'/hpc/users/ruprec01/www/culture_db'
