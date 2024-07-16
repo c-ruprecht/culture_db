@@ -1,2 +1,0 @@
-.headers ON
-select N50, length, genus, species, strain, OD600_no_bkgnd, culture_type, culture_vessel, culture_name, bruker_name, bruker_score, library_name, seed_well, archive_well, media_code, media_description, patient_id FROM genome g, growth gr, strain s, library l, culture c, isolate i, media m, donor d, sample sa WHERE g.isolate_id=i.isolate_id AND l.library_id=i.library_id AND s.strain_id=i.strain_id AND gr.culture_id=c.culture_id AND gr.isolate_id=i.isolate_id AND m.media_id=i.media_id AND sa.sample_id=l.sample_id AND sa.donor_id = d.donor_id;

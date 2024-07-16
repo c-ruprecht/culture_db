@@ -9,3 +9,8 @@ cd /hpc/users/ruprec01/www/culture_db
 python3 culture_db_app.py
 
 # access
+git clone 
+
+# update
+cd /hpc/users/ruprec01/www/culture_db
+git pull
