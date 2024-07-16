@@ -9,10 +9,9 @@ this feature you must install dash-bootstrap-components >= 0.11.0.
 For more details on building multi-page Dash applications, check out the Dash
 documentation: https://dash.plotly.com/urls
 """
-
-import dash_bootstrap_components as dbc
 import dash
-from dash import dcc, html
+import dash_bootstrap_components as dbc
+import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
