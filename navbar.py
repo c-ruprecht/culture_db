@@ -45,7 +45,7 @@ import dash_bootstrap_components as dbc
 
 search_bar = dbc.Row(
     [dbc.Col(dbc.Button('Home', href='culture_db/', class_name='btn btn-dark')),
-        dbc.Col(dbc.DropdownMenu([dbc.DropdownMenuItem(f'page["name"]', href=page["relative_path"]) for page in dash.page_registry.values() ],#if page["path"].contains("/analysis")],
+        dbc.Col(dbc.DropdownMenu([dbc.DropdownMenuItem(f"{page['name']}", href=page["relative_path"]) for page in dash.page_registry.values() ],#if page["path"].contains("/analysis")],
             label='Analysis',
             color='dark',
         )),
