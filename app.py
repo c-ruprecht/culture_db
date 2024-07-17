@@ -25,5 +25,5 @@ app.layout = html.Div([html.H1('Multi-page app with Dash Pages'),
 #                        html.Div(id='page-content', style=CONTENT_STYLE),
 #                        dcc.Store(id='store-db-path', storage_type='local', data={'db_path': "data/culture_db/culture.db"})])
 
-if __name__ == "__main__":
-    app.run_server(port=8050)
+if __name__ == '__main__':
+    app.run_server(debug=True)
