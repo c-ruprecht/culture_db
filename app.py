@@ -8,7 +8,7 @@ from navbar import navbar, CONTENT_STYLE
 app = dash.Dash(__name__,
                 external_stylesheets=[dbc.themes.BOOTSTRAP], 
                 requests_pathname_prefix='/culture_db/index.wsgi/')
-                #use_pages=True)
+                use_pages=True)
 
 app.layout = html.Div([html.H1('Multi-page app with Dash Pages'),
                         html.Div([
@@ -16,7 +16,7 @@ app.layout = html.Div([html.H1('Multi-page app with Dash Pages'),
                                 dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
                             ) for page in dash.page_registry.values()
                         ]),
-                        #dash.page_container
+                        dash.page_container
                     ])
 
 #app.layout = html.Div([dash.page_container,
