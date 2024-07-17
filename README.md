@@ -2,11 +2,11 @@
 cd /hpc/users/ruprec01/www/
 git clone...
 ml python/3.10.4
-pip install --user -r requirements.txt
+pip3 install --user --upgrade -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 
 # typing extension error
-pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp
+pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
 
 
 # create venv and install from requirements file

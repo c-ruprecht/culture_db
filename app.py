@@ -5,27 +5,14 @@ import dash_core_components as dcc
 from navbar import navbar, CONTENT_STYLE
 
 # For deployment, pass app.server (which is the actual flask app) to WSGI etc
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], requests_pathname_prefix='/culture_db/index.wsgi/')
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], requests_pathname_prefix='/culture_db/index.wsgi/',
+                use_pages=True)
 
-app.layout = html.Div(style=CONTENT_STYLE, children=[
+app.layout = html.Div([
     navbar,
-    html.H1(children='Hello Dash'),
-    html.Div(children='''
-        Dash: A web application framework for Python.
-    '''),
-    dcc.Graph(
-        id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': 'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
-    )
-])
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content', style=CONTENT_STYLE),
+    dcc.Store(id='store-db-path', storage_type='local', data={'db_path': "data/culture_db/culture.db"})])
 
 if __name__ == "__main__":
     app.run_server(port=8050)
