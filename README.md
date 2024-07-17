@@ -5,6 +5,9 @@ ml python/3.10.4
 pip install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 
+# typing extension error
+pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp
+
 
 # create venv and install from requirements file
 cd /hpc/users/ruprec01/www/culture_db
