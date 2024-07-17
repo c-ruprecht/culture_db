@@ -14,13 +14,11 @@ app.layout = html.Div([dash.page_container,
                         navbar,
                         dcc.Location(id='url', refresh=False),
                         html.Div(id='page-content', style=CONTENT_STYLE),
-                        dcc.Store(id='store-db-path', storage_type='local', data={'db_path': "data/culture_db/culture.db"})])
+                        ])
 
 @app.callback(
     Output('page-content', 'children'),
-    Input('url', 'pathname'),
-    State('store-db-path', 'data')
-)
+    Input('url', 'pathname'))
 def display_page(pathname, db_path):
     if pathname == '/culture_db/':
         return home.layout
