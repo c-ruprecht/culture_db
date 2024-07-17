@@ -1,8 +1,10 @@
-import sys
+ import sys
 
-activate_this = '/hpc/users/ruprec01/venv_culture_db/bin/activate_this.py'
+#activate_this = '/hpc/users/ruprec01/venv_culture_db/bin/activate_this.py'
 
-exec(open(activate_this).read(), {'__file__': activate_this})
+#exec(open(activate_this).read(), {'__file__': activate_this})
+
+sys.path.insert(0,"/hpc/users/ruprec01/venv_culture_db/lib/python3.6/site-packages")
 
 
 # add your project directory to the sys.path

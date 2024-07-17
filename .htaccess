@@ -1,4 +1,4 @@
-Options +ExecCGI
+#Options +ExecCGI
 AddHandler wsgi-script .wsgi
 DirectoryIndex index.wsgi
 RewriteEngine On
