@@ -1,7 +1,8 @@
 import sys
 
 #Add virtual environment to path
-sys.path.insert(0,"/hpc/users/ruprec01/venv_culture_db/lib/python3.10/site-packages")
+#sys.path.insert(0,"/hpc/users/ruprec01/venv_culture_db/lib/python3.10/site-packages")
+sys.path.insert(0,"~/.local/lib/python3.10/site-packages")
 
 #Or use a local python installation
 # ~/.local/lib/python3.7/site-packages
