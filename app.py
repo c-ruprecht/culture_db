@@ -12,24 +12,17 @@ app = dash.Dash(__name__,
                 requests_pathname_prefix='/culture_db/index.wsgi/',
                 use_pages=True)
 
-app.layout = html.Div([dash.page_container,
-                        navbar,
-                        dcc.Location(id='url', refresh=False),
-                        html.Div(id='page-content', style=CONTENT_STYLE),
-                        ])
 
-@app.callback(
-    Output('page-content', 'children'),
-    Input('url', 'pathname'))
-def display_page(pathname, db_path):
-    if pathname == '/culture_db/':
-        return home.layout
-    elif pathname == '/culture_db/analysis_donor':
-        return analysis_donor.layout
-    elif pathname == '/culture_db/browse_sql':
-        return second_test.layout
-    else:
-        return home.layout
+app.layout = html.Div([navbar,
+                        html.H1('Multi-page app with Dash Pages'),
+                        html.Div([
+                            html.Div(
+                                dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
+                            ) for page in dash.page_registry.values()
+                        ]),
+                        dash.page_container
+                    ])
+
 
 
 if __name__ == '__main__':
