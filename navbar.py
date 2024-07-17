@@ -43,9 +43,10 @@ import dash_bootstrap_components as dbc
 #dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
 #                            ) for page in dash.page_registry.values()
 
-search_bar = dbc.Row(
+def search_bar():
+    return dbc.Row(
     [dbc.Col(dbc.Button('Home', href='culture_db/', class_name='btn btn-dark')),
-        dbc.Col(dbc.DropdownMenu([dbc.DropdownMenuItem(f"{page['name']}", href=page["relative_path"]) for page in dash.page_registry.values() ],#if page["path"].contains("/analysis")],
+        dbc.Col(dbc.DropdownMenu([dbc.DropdownMenuItem(f"{page['name']}", href=page["relative_path"]) for page in dash.page_registry.values()],#if page["path"].contains("/analysis")],
             label='Analysis',
             color='dark',
         )),
@@ -75,7 +76,7 @@ navbar = dbc.Navbar(
             ),
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
-                search_bar,
+                search_bar(),
                 id="navbar-collapse",
                 is_open=False,
                 navbar=True,
