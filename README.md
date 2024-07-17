@@ -8,6 +8,9 @@ python3 -m venv /hpc/users/ruprec01/venv_culture_db # This path needs to be upda
 - activate environment
 source /hpc/users/ruprec01/venv_culture_db/bin/activate
 pip install -r requirements.txt
+ - add activate this file to venv
+ cd /hpc/users/ruprec01/www/culture_db
+ cp activate_this.py /hpc/users/ruprec01/venv_culture_db/bin/
 
 # update
 cd /hpc/users/ruprec01/www/culture_db
