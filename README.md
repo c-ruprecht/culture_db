@@ -5,18 +5,9 @@ git clone...
 # create venv and install from requirements file
 cd /hpc/users/ruprec01/www/culture_db
 python3 -m venv /hpc/users/ruprec01/venv_culture_db # This path needs to be updated in index.wsgi
-activate environment
+- activate environment
 source /hpc/users/ruprec01/venv_culture_db/bin/activate
-pip install --upgrade pip
-
-/hpc/users/ruprec01/venv_culture_db/bin/pip install -r requirements.txt
-
-# test 
-cd /hpc/users/ruprec01/www/culture_db
-python3 culture_db_app.py
-
-# access
-git clone 
+pip install -r requirements.txt
 
 # update
 cd /hpc/users/ruprec01/www/culture_db

@@ -1,10 +1,5 @@
-#!/hpc/users/ruprec01/venv_culture_db/bin/python
-
-import os
 import sys
 
-# Set up the virtual environment
-# sys.path.insert(0,"/hpc/users/ruprec01/venv_culture_db/lib/python3.6/site-packages")
 
     
 # add your project directory to the sys.path
