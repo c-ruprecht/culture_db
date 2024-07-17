@@ -18,7 +18,7 @@ app.layout = html.Div([navbar,
                         html.Div([
                             html.Div(
                                 dcc.Link(f"{page['name']} - {page['path']}", href=page["relative_path"])
-                            ) for page in dash.page_registry.values(),
+                            ) for page in dash.page_registry.values()
                         ]),
                         dash.page_container
                     ])
