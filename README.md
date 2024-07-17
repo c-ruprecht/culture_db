@@ -2,9 +2,8 @@
 cd /hpc/users/ruprec01/www/
 git clone...
 ml python/3.10.4
-python3 -m venv /hpc/users/ruprec01/venv_culture_db
-source /hpc/users/ruprec01/venv_culture_db/bin/activate
-pip install -r requirements.txt
+pip install --user -r requirements.txt
+export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 
 
 # create venv and install from requirements file
