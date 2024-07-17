@@ -9,3 +9,4 @@ dash-daq==latest
 dash-cytoscape==latest
 flask==latest
 gunicorn==latest
+libapache2-mod-wsgi-py3
