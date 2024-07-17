@@ -36,12 +36,16 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
+import dash
+from dash import html
+import dash_bootstrap_components as dbc
+
+
+
 search_bar = dbc.Row(
     [
         dbc.Col(dbc.Button('Home', href='culture_db/', class_name='btn btn-dark')),
-        dbc.Col(dbc.DropdownMenu([
-            dbc.DropdownMenuItem('Donor', href='culture_db/analysis_donor'),
-        ],
+        dbc.Col(dbc.DropdownMenu([dbc.DropdownMenuItem(page["name"], href=page["path"]) for page in dash.page_registry.values() if page["path"].startswith("/analysis")],
             label='Analysis',
             color='dark',
         )),
