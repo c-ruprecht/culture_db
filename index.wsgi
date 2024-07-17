@@ -19,6 +19,6 @@ if project_home not in sys.path:
 from app import app
 application = app.server
 
-app.config.update({
-    'requests_pathname_prefix': '/culture_db/index.wsgi/'
-})
+#app.config.update({
+#    'requests_pathname_prefix': '/culture_db/index.wsgi/'
+#})

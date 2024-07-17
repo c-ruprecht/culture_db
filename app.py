@@ -5,7 +5,7 @@ import dash_core_components as dcc
 from navbar import navbar, CONTENT_STYLE
 
 # For deployment, pass app.server (which is the actual flask app) to WSGI etc
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], requests_pathname_prefix='/culture_db/index.wsgi/')
 
 app.layout = html.Div(style=CONTENT_STYLE, children=[
     navbar,
