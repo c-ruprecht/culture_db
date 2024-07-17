@@ -1,6 +1,6 @@
 # Installation
 cd /hpc/users/ruprec01/www/
-git clone...
+git clone https://github.com/c-ruprecht/culture_db.git
 ml python/3.10.4
 pip3 install --user --upgrade -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
