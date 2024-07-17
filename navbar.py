@@ -38,15 +38,15 @@ CONTENT_STYLE = {
 
 search_bar = dbc.Row(
     [
-        dbc.Col(dbc.Button('Home', href='/', class_name='btn btn-dark')),
+        dbc.Col(dbc.Button('Home', href='culture_db/', class_name='btn btn-dark')),
         dbc.Col(dbc.DropdownMenu([
-            dbc.DropdownMenuItem('Donor', href='/analysis_donor'),
+            dbc.DropdownMenuItem('Donor', href='culture_db/analysis_donor'),
         ],
             label='Analysis',
             color='dark',
         )),
         dbc.Col(dbc.DropdownMenu([
-            dbc.DropdownMenuItem('Custom SQL Query', href='/browse_sql'),
+            dbc.DropdownMenuItem('Custom SQL Query', href='culture_db/browse_sql'),
         ],
             label='Browse',
             color='dark',

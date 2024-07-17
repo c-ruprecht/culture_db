@@ -22,12 +22,12 @@ app.layout = html.Div([dash.page_container,
     State('store-db-path', 'data')
 )
 def display_page(pathname, db_path):
-    if pathname == '/':
+    if pathname == '/culture_db/':
         return home.layout
-    elif pathname == '/analysis_donor':
+    elif pathname == '/culture_db/analysis_donor':
         return analysis_donor.layout
-    elif pathname == '/browse_sql':
-        return browse_sql.layout
+    elif pathname == '/culture_db/browse_sql':
+        return second_test.layout
     else:
         return home.layout
 
