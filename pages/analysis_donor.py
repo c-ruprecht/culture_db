@@ -8,7 +8,6 @@ from sqlite3 import Error
 import plotly.express as px
 #from pages.layout import layout
 
-db_path = "data/culture_db/culture.db"#layout['store-db-path'].data.get('db_path', '')
 
 dash.register_page(__name__, path = '/analysis_donor')
 
@@ -20,7 +19,14 @@ layout = html.Div(id = 'anal_donor')
     Input('store-db-path', 'data')
 )
 
-def get_donors(data):
+def get_donors(store_data):
+
+    db_path = store_data.get('db_path')
+    #remove /app from path if it is present
+    if db_path.startswith('/app/'):
+        db_path = db_path[len('/app/'):]
+
+    print('stored path '+ db_path)
     query = """select * from donor"""
     with sqlite3.connect(db_path) as connection:
         df = pd.read_sql_query(query, connection)
