@@ -17,10 +17,9 @@ def create_app(prefix):
     app.layout = layout
     #callback to manage content in the main page
     @callback(Output('page-content', 'children'),
-                Input('url', 'pathname'),
-                State('store-db-path', 'data'))
+                Input('url', 'pathname'))
 
-    def display_page(pathname, db_path):
+    def display_page(pathname):
         url_base = app.config.get('requests_pathname_prefix', '/')
         if pathname == url_base + 'home':
             return home.layout
