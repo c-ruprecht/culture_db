@@ -22,6 +22,7 @@ def create_app(prefix):
     def display_page(pathname):
         #url_base = app.config.get('requests_pathname_prefix', '/')
         url_base = app.config.get('requests_pathname_prefix')
+        print(url_base)
         if pathname == url_base + 'home':
             return home.layout
         elif pathname == url_base + 'analysis_donor':
