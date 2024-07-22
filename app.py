@@ -14,6 +14,8 @@ def create_app(prefix, db_path):
     app = dash.Dash(__name__,
                     external_stylesheets=[dbc.themes.BOOTSTRAP],
                     requests_pathname_prefix = prefix )
+                    
+    #Import all the pages               
     from pages import home, browse_sql, analysis_donor
 
 

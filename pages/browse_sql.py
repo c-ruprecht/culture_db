@@ -10,7 +10,6 @@ from sqlite3 import Error
 
 
 dash.register_page(__name__, path='/browse_sql')
-db_path = "data/culture_db/culture.db"#layout['store-db-path'].data.get('db_path', '')
 
 ### Standard queries
 queries = {
@@ -24,7 +23,10 @@ queries = {
     Input('store-db-path', 'data'),
     prevent_initial_call=False
 )
-def initialize_cytoscape(data):
+def initialize_cytoscape(store_data):
+    db_path = store_data.get('db_path')
+    if db_path.startswith('/app/'):
+        db_path = db_path[len('/app/'):]
     query = """
             SELECT 
                 m.name AS table_name, 
@@ -84,7 +86,10 @@ def initialize_cytoscape(data):
     Input('cytoscape', 'selectedNodeData'),
     prevent_initial_call=False
 )
-def update_table(data, selected_nodes):
+def update_table(store_data, selected_nodes):
+    db_path = store_data.get('db_path')
+    if db_path.startswith('/app/'):
+        db_path = db_path[len('/app/'):]
     query = """
             SELECT 
                 m.name AS table_name, 
@@ -198,7 +203,11 @@ layout = html.Div(children=[
     State('txt-area-sql', 'value'),
     State('store-db-path', 'data')
 )
-def on_button_click(qry_drop, n_clicks, value, data):
+def on_button_click(qry_drop, n_clicks, value, store_data):
+    db_path = store_data.get('db_path')
+    if db_path.startswith('/app/'):
+        db_path = db_path[len('/app/'):]
+
     ctx = dash.callback_context
     triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
