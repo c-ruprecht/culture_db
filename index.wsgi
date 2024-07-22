@@ -8,10 +8,6 @@ project_home = u'/hpc/users/ruprec01/www/culture_db'
 if project_home not in sys.path:
     sys.path = [project_home] + sys.path
 
-#Set database path
-os.environ['DB_PATH'] = "/hpc/users/ruprec01/www/culture_db/data/culture_db/culture.db"
-
-
 # need to pass the flask app as "application" for WSGI to work
 # for a dash app, that is at app.server
 # see https://plot.ly/dash/deployment
