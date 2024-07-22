@@ -1,28 +1,33 @@
 import dash
 import dash_bootstrap_components as dbc
-from navbar import navbar, CONTENT_STYLE
+from navbar import CONTENT_STYLE
 from dash.dependencies import Input, Output, State
 from dash import callback, html, dcc
-from pages import home, browse_sql, analysis_donor
-from pages.layout import layout
+#from pages.layout import layout
+from navbar import create_navbar
+
 
 # For deployment, pass app.server (which is the actual flask app) to WSGI etc
 # This allows to run the app locally via run_local.py and setting a correct pathname for the wsgi server
 
-def create_app(prefix):
+def create_app(prefix, db_path):
     app = dash.Dash(__name__,
                     external_stylesheets=[dbc.themes.BOOTSTRAP],
                     requests_pathname_prefix = prefix )
+    from pages import home, browse_sql, analysis_donor
 
-    app.layout = layout
+
+    url_base = app.config.get('requests_pathname_prefix')
+    app.layout = html.Div([create_navbar(url_base),
+                        dcc.Location(id='url', refresh=False),
+                        html.Div(id='page-content', style=CONTENT_STYLE),
+                        dcc.Store(id='store-db-path', storage_type='local', data={'db_path': db_path})
+                    ])
     #callback to manage content in the main page
     @callback(Output('page-content', 'children'),
                 Input('url', 'pathname'))
 
-    def display_page(pathname):
-        #url_base = app.config.get('requests_pathname_prefix', '/')
-        url_base = app.config.get('requests_pathname_prefix')
-        print('WHAT IS GOING ON' + str(url_base))
+    def display_page(pathname):        
         if pathname == url_base + 'home':
             return home.layout
         elif pathname == url_base + 'analysis_donor':

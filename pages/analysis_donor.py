@@ -6,11 +6,11 @@ import pandas as pd
 import sqlite3
 from sqlite3 import Error
 import plotly.express as px
-from pages.layout import layout
+#from pages.layout import layout
 
-db_path = layout['store-db-path'].data.get('db_path', '')
+db_path = "data/culture_db/culture.db"#layout['store-db-path'].data.get('db_path', '')
 
-dash.register_page(__name__, path='/analysis_donor')
+dash.register_page(__name__, path = '/analysis_donor')
 
 
 layout = html.Div(id = 'anal_donor')

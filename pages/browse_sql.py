@@ -6,11 +6,11 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import sqlite3
 from sqlite3 import Error
-from pages.layout import layout
+#from pages.layout import layout
 
 
 dash.register_page(__name__, path='/browse_sql')
-db_path = layout['store-db-path'].data.get('db_path', '')
+db_path = "data/culture_db/culture.db"#layout['store-db-path'].data.get('db_path', '')
 
 ### Standard queries
 queries = {

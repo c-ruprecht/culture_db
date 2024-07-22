@@ -7,12 +7,14 @@ import pandas as pd
 from dash.dependencies import Input, Output, State
 import sqlite3
 from sqlite3 import Error
-from pages.layout import layout
+#from pages.layout import layout
 import plotly.express as px
+
+dash.register_page(__name__, path='/home')
 
 ### Culture Library overview plot
 query = """select * from library"""
-db_path = layout['store-db-path'].data.get('db_path', '')
+db_path = "data/culture_db/culture.db"#layout['store-db-path'].data.get('db_path', '')
 print(db_path)
 
 with sqlite3.connect(db_path) as connection:
@@ -63,7 +65,6 @@ dict_general_stats
 
 
 
-dash.register_page(__name__, path='/home')
 
 
 ### Tabs and contents

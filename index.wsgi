@@ -14,5 +14,5 @@ if project_home not in sys.path:
 # see https://plot.ly/dash/deployment
 
 from app import create_app
-app = create_app(prefix = '/culture_db/index.wsgi/')
+app = create_app(prefix = '/culture_db/index.wsgi/', db_path = '/hpc/users/ruprec01/www/culture_db/data/culture_db/culture.db')
 application = app.server

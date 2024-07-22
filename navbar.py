@@ -17,8 +17,6 @@ import dash_bootstrap_components as dbc
 import dash_daq as daq
 from dash import Input, Output, State,  dcc, html, Dash, callback
 
-app = Dash()#external_stylesheets=[dbc.themes.BOOTSTRAP]
-
 #Replace current sidebar with navbar from
 #https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
 
@@ -42,58 +40,57 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
-url_base = app.config.get('requests_pathname_prefix', '/')
+def create_navbar(url_base):
+    search_bar = dbc.Row(
+        [   dbc.Col(dbc.Button('Home', href = url_base + 'home', class_name= 'btn btn-dark')),
+            dbc.Col(dbc.DropdownMenu([
+                                    dbc.DropdownMenuItem('Donor', href = url_base + 'analysis_donor'),
+                                    ],
+                                    label = 'Analysis',
+                                    color = 'dark',
+                                    )),
+            dbc.Col(dbc.DropdownMenu([
+                                    dbc.DropdownMenuItem('Custom SQL Query', href = url_base + 'browse_sql'),
+                                    ],
+                                    label = 'Browse',
+                                    color = 'dark',
+                                    )),
+            
+        ],
+        class_name="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
+        align="right",
+        #justify="center",
+    )
 
-search_bar = dbc.Row(
-    [   dbc.Col(dbc.Button('Home', href = url_base + 'home', class_name= 'btn btn-dark')),
-        dbc.Col(dbc.DropdownMenu([
-                                dbc.DropdownMenuItem('Donor', href = url_base + 'analysis_donor'),
-                                ],
-                                label = 'Analysis',
-                                color = 'dark',
-                                )),
-        dbc.Col(dbc.DropdownMenu([
-                                dbc.DropdownMenuItem('Custom SQL Query', href = url_base + 'browse_sql'),
-                                ],
-                                label = 'Browse',
-                                color = 'dark',
-                                )),
-        
-    ],
-    class_name="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
-    align="right",
-    #justify="center",
-)
-
-navbar = dbc.Navbar(
-    dbc.Container(
-        [
-            html.A(
-                # Use row and col to control vertical alignment of logo / brand
-                dbc.Row(
-                    [
-                        #dbc.Col(html.Img(src=app.get_asset_url('logo_faithlab.png'), height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Microbial Culture DB", className="ms-2")),
-                    ],
-                    align="center",
-                    className="g-0",
+    navbar = dbc.Navbar(
+        dbc.Container(
+            [
+                html.A(
+                    # Use row and col to control vertical alignment of logo / brand
+                    dbc.Row(
+                        [
+                            #dbc.Col(html.Img(src=app.get_asset_url('logo_faithlab.png'), height="30px")),
+                            dbc.Col(dbc.NavbarBrand("Microbial Culture DB", className="ms-2")),
+                        ],
+                        align="center",
+                        className="g-0",
+                    ),
+                    #href="https://plotly.com",
+                    style={"textDecoration": "none"},
                 ),
-                #href="https://plotly.com",
-                style={"textDecoration": "none"},
-            ),
-            dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-            dbc.Collapse(
-                search_bar,
-                id="navbar-collapse",
-                is_open=False,
-                navbar=True,
-            ),
-        ]
-    ),
-    color="dark",
-    dark=True, #True
-)
-
+                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
+                dbc.Collapse(
+                    search_bar,
+                    id="navbar-collapse",
+                    is_open=False,
+                    navbar=True,
+                ),
+            ]
+        ),
+        color="dark",
+        dark=True, #True
+    )
+    return navbar
 # add callback for toggling the collapse on small screens
 @callback(
     Output("navbar-collapse", "is_open"),
