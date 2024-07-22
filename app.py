@@ -1,41 +1,43 @@
 import dash
 import dash_bootstrap_components as dbc
-import dash_html_components as html
-import dash_core_components as dcc
 from navbar import navbar, CONTENT_STYLE
 from dash.dependencies import Input, Output, State
-from dash import callback
+from dash import callback, html, dcc
 from pages import home, browse_sql, analysis_donor
-
+from pages.layout import layout
 
 # For deployment, pass app.server (which is the actual flask app) to WSGI etc
-app = dash.Dash(__name__,
-                external_stylesheets=[dbc.themes.BOOTSTRAP], 
-                requests_pathname_prefix='/culture_db/index.wsgi/')
+# This allows to run the app locally via run_local.py and setting a correct pathname for the wsgi server
+
+def create_app(prefix):
+    app = dash.Dash(__name__,
+                    external_stylesheets=[dbc.themes.BOOTSTRAP],
+                    requests_pathname_prefix = prefix )
+
+    app.layout = layout
+    #callback to manage content in the main page
+    @callback(Output('page-content', 'children'),
+                Input('url', 'pathname'),
+                State('store-db-path', 'data'))
+
+    def display_page(pathname, db_path):
+        url_base = app.config.get('requests_pathname_prefix', '/')
+        if pathname == url_base + 'home':
+            return home.layout
+        elif pathname == url_base + 'analysis_donor':
+            return analysis_donor.layout
+        elif pathname == url_base + 'browse_sql':
+            return browse_sql.layout
+        else:
+            return home.layout
+    return app
 
 
-app.layout = html.Div([navbar,
-                        dcc.Location(id='url', refresh=False),
-                        html.Div(id='page-content', style=CONTENT_STYLE),
-                        dcc.Store(id='store-db-path', storage_type='local', data={'db_path': "data/culture_db/culture.db"})
-                    ])
 
 
-
-@app.callback(
-    Output('page-content', 'children'),
-    Input('url', 'pathname'),
-    State('store-db-path', 'data')
-)
-def display_page(pathname, db_path):
-    if pathname == '/':
-        return home.layout
-    elif pathname == '/culture_db/index.wsgi/analysis_donor':
-        return analysis_donor.layout
-    elif pathname == '/culture_db/index.wsgi/browse_sql':
-        return browse_sql.layout
-    else:
-        return home.layout
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
+
+
+    

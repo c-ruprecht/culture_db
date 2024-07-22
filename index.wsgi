@@ -12,10 +12,6 @@ if project_home not in sys.path:
 # for a dash app, that is at app.server
 # see https://plot.ly/dash/deployment
 
-from app import app
+from app import create_app
+app = create_app(prefix = '/culture_db/index.wsgi/')
 application = app.server
-
-#this is added in the app itself
-#app.config.update({
-#    'requests_pathname_prefix': '/culture_db/index.wsgi/'
-#})

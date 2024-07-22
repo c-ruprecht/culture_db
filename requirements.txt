@@ -10,4 +10,3 @@ dash-cytoscape
 flask
 gunicorn
 typing_extensions
-

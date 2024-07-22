@@ -1,4 +1,4 @@
-# Installation
+# Installation on minerva
 cd /hpc/users/ruprec01/www/
 git clone https://github.com/c-ruprecht/culture_db.git
 ml python/3.10.4
@@ -8,6 +8,13 @@ export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH
 
 # typing extension error
 pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
+
+# Running local
+- the prefix for index.wsgi to be called is added by the create_app() function defined in app.py
+- this allows to run the dashboard for debugging locally first using run_local.py that uses '/' as path prefix
+git clone ...
+cd to_target_folder/
+python3 run_local.py
 
 # update
 cd /hpc/users/ruprec01/www/culture_db
