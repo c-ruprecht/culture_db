@@ -8,6 +8,13 @@ pip3 install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
 
+# Installation on minerva in virtual environent
+ml python/3.10.4
+pytjon3 -m venv /hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv 
+source /hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv/bin/activate
+pip install -r requirements.txt
+export PYTHONPATH=/hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv/lib/python3.10/site-packages:$PYTHONPATH
+
 # python 3.12
 ml python/3.12.5
 export PYTHONPATH=~/.local/lib/3.12/site-packages/:$PYTHONPATH 
@@ -36,7 +43,7 @@ cd /hpc/users/ruprec01/www/culture_db
 git pull
 
 # typing extension error
-pip3.12 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
+pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
 
 # Running local
 ## Create virtual environment to run

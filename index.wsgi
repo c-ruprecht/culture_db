@@ -2,8 +2,10 @@ import sys
 import os
 
 #Add correct python path to execute
-sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.10/site-packages")
-#sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.12/site-packages")
+#sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.10/site-packages")
+# Add pytjon virtual environment
+sys.path.insert(0, '/hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv/lib/python3.10/site-packages')
+
 
 # add your project directory to the sys.path
 project_home = u'/hpc/users/ruprec01/www/culture_db'
