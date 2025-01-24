@@ -1,11 +1,13 @@
 import sys
 import os
+import site
 
 #Add correct python path to execute
 #sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.10/site-packages")
 
 #with conda environment
 sys.path.insert(0,"/hpc/users/ruprec01/.conda/envs/culture_db_env/lib/python3.10/site-packages")
+site.addsitedir("/hpc/users/ruprec01/.conda/envs/culture_db_env/lib/python3.10/site-packages")
 
 # add your project directory to the sys.path
 project_home = u'/hpc/users/ruprec01/www/culture_db'
