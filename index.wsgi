@@ -6,7 +6,7 @@ import site
 #sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.10/site-packages")
 
 # Add pytjon virtual environment
-#sys.path.insert(0, '/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
+sys.path.insert(0, '/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
 site.addsitedir('/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
 
 
@@ -23,6 +23,8 @@ if project_home not in sys.path:
 activate_env = '/hpc/users/ruprec01/www/culture_db/venv/bin/activate_this.py'
 with open(activate_env) as f:
     exec(f.read(), {'__file__': activate_env})
+    
+print("Virtual environment activated successfully")
 
 from app import create_app
 app = create_app(prefix = '/culture_db/index.wsgi/', db_path = '/hpc/users/ruprec01/www/culture_db/data/culture_db/culture.db')
