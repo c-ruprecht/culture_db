@@ -10,10 +10,10 @@ export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH
 
 # Installation on minerva in virtual environent
 ml python/3.10.4
-pytjon3 -m venv /hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv 
-source /hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv/bin/activate
+python3 -m venv /hpc/users/ruprec01/www/culture_db/venv 
+source /hpc/users/ruprec01/www/culture_db/venv/bin/activate
 pip install -r requirements.txt
-export PYTHONPATH=/hpc/users/ruprec01/.local/lib/python3.10/site-packages/venv/lib/python3.10/site-packages:$PYTHONPATH
+export PYTHONPATH=/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages:$PYTHONPATH
 
 # python 3.12
 ml python/3.12.5
