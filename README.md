@@ -12,6 +12,12 @@ export PATH=~/.local/bin/:$PATH
 ml anaconda3/latest
 conda env create -f environment.yml
 conda activate culture_db_env
+ - double check that packages are installed 
+ ls /hpc/users/ruprec01/.conda/envs/culture_db_env/lib/python3.10/site-package
+ -installed manuallly after activating with requirements file
+
+# build with virtualenv
+ml OpenSSL/1.0.2
 
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
