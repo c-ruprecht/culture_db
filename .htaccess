@@ -6,4 +6,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.wsgi/$1 [QSA,PT,L]
 
 #Virtual environment set up this needs to be in the apache2 configuration
-#WSGIDaemonProcess culture_db python-home=/hpc/users/ruprec01/.conda/envs/culture_db_env
+WSGIDaemonProcess culture_db python-home=/hpc/users/ruprec01/.conda/envs/culture_db_env
