@@ -3,8 +3,10 @@ import os
 
 #Add correct python path to execute
 #sys.path.insert(0,"/hpc/users/ruprec01/.local/lib/python3.10/site-packages")
+
 # Add pytjon virtual environment
-sys.path.insert(0, '/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
+#sys.path.insert(0, '/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
+site.addsitedir('/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages')
 
 
 # add your project directory to the sys.path
@@ -15,6 +17,11 @@ if project_home not in sys.path:
 # need to pass the flask app as "application" for WSGI to work
 # for a dash app, that is at app.server
 # see https://plot.ly/dash/deployment
+
+# Activate the virtual environment
+activate_env = '/hpc/users/ruprec01/www/culture_db/venv/bin/activate_this.py'
+with open(activate_env) as f:
+    exec(f.read(), {'__file__': activate_env})
 
 from app import create_app
 app = create_app(prefix = '/culture_db/index.wsgi/', db_path = '/hpc/users/ruprec01/www/culture_db/data/culture_db/culture.db')
