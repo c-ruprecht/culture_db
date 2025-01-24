@@ -6,7 +6,7 @@ ml python/3.10.4
 pip3 install --user --upgrade -r requirements.txt
 pip3 install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
-export PYTHONPATH=/hpc/users/ruprec01/.local/lib/python3.10/site-packages
+export PATH=~/.local/bin/:$PATH
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
 
 # libffi for cytoscape
