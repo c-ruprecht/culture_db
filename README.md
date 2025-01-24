@@ -11,6 +11,8 @@ export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH
 # python 3.12
 ml python/3.12.5
 export PYTHONPATH=~/.local/lib/3.12/site-packages/:$PYTHONPATH 
+pip3.12 install --user -r requirements.txt
+- you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
 
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
@@ -34,7 +36,7 @@ cd /hpc/users/ruprec01/www/culture_db
 git pull
 
 # typing extension error
-pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
+pip3.12 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
 
 # Running local
 ## Create virtual environment to run
