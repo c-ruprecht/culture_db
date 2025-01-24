@@ -8,7 +8,10 @@ pip3 install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 export PATH=~/.local/bin/:$PATH
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
-
+# try building ith conda 
+ml anaconda3/latest
+conda env create -f environment.yml
+conda activate culture_db_env
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
 tar -xzf libffi-3.3.tar.gz
