@@ -6,15 +6,8 @@ ml python/3.10.4
 pip3 install --user --upgrade -r requirements.txt
 pip3 install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
+export PYTHONPATH=/hpc/users/ruprec01/.local/lib/python3.10/site-packages
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
-
-# Installation on minerva in virtual environent
-ml python/3.10.4
-python3 -m venv /hpc/users/ruprec01/www/culture_db/venv 
-source /hpc/users/ruprec01/www/culture_db/venv/bin/activate
-pip install -r requirements.txt
-export PYTHONPATH=/hpc/users/ruprec01/www/culture_db/venv/lib/python3.10/site-packages:$PYTHONPATH
-
 
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
@@ -24,6 +17,7 @@ export INSTALLDIR=/hpc/users/ruprec01/my_apps
 ./configure --prefix=$INSTALLDIR
 make
 make install
+
 # create symbolic link  between libffi7 and libffi6
 cd /hpc/users/ruprec01/my_apps/lib64
 ln -s libffi.so.7 libffi.so.6
