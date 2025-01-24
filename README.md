@@ -5,9 +5,24 @@ git clone https://github.com/c-ruprecht/culture_db.git
 ml python/3.10.4
 pip3 install --user --upgrade -r requirements.txt
 pip3 install --user -r requirements.txt
-
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
+
+# libffi for cytoscape
+wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
+tar -xzf libffi-3.3.tar.gz
+cd libffi-3.3
+export INSTALLDIR=/hpc/users/ruprec01/my_apps
+./configure --prefix=$INSTALLDIR
+make
+make install
+# create symbolic link  between libffi7 and libffi6
+cd /hpc/users/ruprec01/my_apps/lib64
+ln -s libffi.so.7 libffi.so.6
+
+# Set environment variables
+export LD_LIBRARY_PATH=/hpc/users/ruprec01/my_apps/lib64:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/hpc/users/ruprec01/my_apps/lib/pkgconfig:$PKG_CONFIG_PATH
 
 # updating
 ml git
