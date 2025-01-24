@@ -7,6 +7,11 @@ pip3 install --user --upgrade -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
 
+# updating
+ml git
+cd /hpc/users/ruprec01/www/culture_db
+git pull
+
 # typing extension error
 pip3 install --user --upgrade click flask importlib_metadata typing_extensions zipp plotly
 
