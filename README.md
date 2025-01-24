@@ -12,6 +12,7 @@ export PATH=~/.local/bin/:$PATH
 ml anaconda3/latest
 conda env create -f environment.yml
 conda activate culture_db_env
+
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
 tar -xzf libffi-3.3.tar.gz
