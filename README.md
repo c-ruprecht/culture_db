@@ -8,16 +8,7 @@ pip3 install --user -r requirements.txt
 export PYTHONPATH=~/.local/lib/3.10/site-packages/:$PYTHONPATH 
 export PATH=~/.local/bin/:$PATH
 - you need to make sure that the index.wsgi file imports your specific paths like "/hpc/users/ruprec01/.local/lib/python3.10/site-packages"
-# try building ith conda 
-ml anaconda3/latest
-conda env create -f environment.yml
-conda activate culture_db_env
- - double check that packages are installed 
- ls /hpc/users/ruprec01/.conda/envs/culture_db_env/lib/python3.10/site-package
- -installed manuallly after activating with requirements file
 
-# build with virtualenv
-ml OpenSSL/1.0.2
 
 # libffi for cytoscape
 wget ftp://sourceware.org/pub/libffi/libffi-3.3.tar.gz
@@ -31,7 +22,6 @@ make install
 # create symbolic link  between libffi7 and libffi6
 cd /hpc/users/ruprec01/my_apps/lib64
 ln -s libffi.so.7 libffi.so.6
-
 # Set environment variables
 export LD_LIBRARY_PATH=/hpc/users/ruprec01/my_apps/lib64:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=/hpc/users/ruprec01/my_apps/lib/pkgconfig:$PKG_CONFIG_PATH
